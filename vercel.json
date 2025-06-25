@@ -1,0 +1,13 @@
+{
+    "builds":[{
+        "src":"pilgrimage/wsgi.py",
+        "use":"@vercel/python",
+        "config": {"maxLambodaSize": "15nb", "runtime": "python3.9"}
+    }],
+    "routes":[
+        {
+            "src":"(./*)",
+            "dest": "pilgrimage/wsgi.py"
+        }
+    ]
+}
