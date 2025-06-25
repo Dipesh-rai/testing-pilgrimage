@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-8!%sqzg6xspytqm8n=jx!8i26mis=0o1e9dk44n0ob4d3avx_a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = [
+    '.vercel.app',
+    '.now.sh',
+    'testing-pilgrimage-new.vercel.app'  # your specific domain
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -121,7 +125,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
