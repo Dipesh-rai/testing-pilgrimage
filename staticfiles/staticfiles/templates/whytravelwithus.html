@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <!-- banner -->
+     {% for n in ourmission %}
+    <section class="banner-next">
+        <img src="/media/{{n.banner_img}}" alt="">
+         <div class="banner-content-next">
+            <div class="container">
+                 <div class="row">
+                <div class="col-lg-6">
+                    <h1 class="heading-items">{{ n.banner_heading }}</h1>
+                    <div class="dark-light">{{ n.banner_short_description|safe }}</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- about us -->
+    <section class="trip-info sacred mt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <article>
+                        {{n.description | safe}}
+                    </article>
+                </div>
+                <div class="col-lg-3">
+                    <div class="height-100">
+                        <div class="sticky">
+                            <div class="d-flex flex-column gap-3">
+
+                                <div class=" background-g shadow-main  border-radius-5 p-0">
+                                    <div class="secondary-type-heading background-nav p-3">Buddist Practices</div>
+                                    <ul class="side-nav p-0 ul-relative ">
+                                        <li><a href=""> <span class="ul-absolute"><i
+                                                        class="fa-solid fa-hands-praying"></i></span>Meditation </a>
+                                        </li>
+                                        <li><a href=""><span class="ul-absolute"><i class="fa-solid fa-bell"></i></span>
+                                                Singing
+                                                Bowl Therapy</a></li>
+
+                                        <li><a href=""><span class="ul-absolute"><i
+                                                        class="fa-solid fa-vihara"></i></span>Prayer
+                                                & Chanting</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class=" background-g shadow-main border-radius-5 p-0">
+                                    <div class="secondary-type-heading background-nav p-3">Start Your Journey with Us
+                                        Today</div>
+                                    <ul class="side-nav p-0 ul-relative ">
+                                        <li><a href="{% url 'contact' %}" target="_blank"><span class="ul-absolute"><i
+                                                        class="fa-solid fa-address-book"></i></span>Contact us</a></li>
+                                        <li><a href="https://wa.me/{{ n.whatsapp_number }}" target="_blank"><span
+                                                    class="ul-absolute"><i class="fa-brands fa-whatsapp"></i></span>
+                                                Contact us in
+                                                Whats
+                                                App</a></li>
+                                        {% for n in contactpage %}
+                                        <li><a href="mailto:{{n.email}}" s target="_blank"><span class="ul-absolute"><i class="fa-solid fa-envelope"></i></span>
+                                                {{n.email}} </a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+
+                                <!-- follow -->
+                                <div class="shadow-main border-radius-5">
+                                    <div class="secondary-type-heading background-nav p-3">Follow us on</div>
+                                    <div class="d-flex gap-3 align-items-center background-g p-4">
+                                        <a href=""><i class="media-items fa-brands fa-facebook-f"></i></a>
+                                        <a href=""><i class="media-items fa-brands fa-instagram"></i></a>
+                                        <a href=""><i class="media-items fa-brands fa-whatsapp"></i></a>
+                                        <a href=""><i class="media-items fa-brands fa-youtube"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endfor %}
+
+{% endblock %}

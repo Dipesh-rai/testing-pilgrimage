@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-8!%sqzg6xspytqm8n=jx!8i26mis=0o1e9dk44n0ob4d3avx_a
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # For Vercel deployments
-DEBUG = False  # Set to True temporarily for debugging
+DEBUG = True  # Set to True temporarily for debugging
 ALLOWED_HOSTS = ['.vercel.app', '.now.sh', 'testing-pilgrimage-new.vercel.app']
 # Application definition
 

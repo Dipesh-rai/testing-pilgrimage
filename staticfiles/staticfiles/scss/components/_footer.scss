@@ -1,0 +1,83 @@
+footer {
+    padding: 0;
+    background-color: var(--secondary-color);
+    padding: 30px 0;
+    color: var(--light-color);
+    font-weight: 400;
+    padding: 2rem 0;
+
+
+    .footer-content {
+        padding-bottom: 30px;
+        padding-inline: 0;
+        border-bottom: 1px solid rgb(128, 126, 126);
+
+        
+
+        // media
+        .media-items {
+            padding: 0;
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+            font-size: var(--font-lg);
+            background-color: rgba(182, 172, 172, 0.151);
+            @include flex-center;
+
+            &:hover {
+                background-color: var(--primary-color);
+                color: white;
+            }
+        }
+
+
+
+        .link-heading {
+            font-family: var(--secondary-font);
+            color: white;
+            font-size: var(--font-xxl);
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+
+        ul {
+            padding: 0;
+
+            li {
+                padding: 6px 0;
+
+                a {
+                    &:hover {
+                        color:var(--primary-color) !important;
+                     text-decoration: underline !important;
+                    }
+                }
+            }
+        }
+
+        i {
+            color: white;
+            font-size: var(--font-md);
+            padding-top: 5px;
+        }
+
+        .contact-items {
+            @include flex-center;
+        }
+    }
+
+    .fotter-bottom {
+        a {
+            &:hover {
+                color: var(--primary-color) !important;
+            }
+        }
+
+        // landscapes phones\
+        @media (max-width:576) {}
+    }
+
+}
+
+
+

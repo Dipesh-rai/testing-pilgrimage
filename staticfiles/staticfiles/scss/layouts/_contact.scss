@@ -1,0 +1,78 @@
+.contact {
+    color: var(--text-color);
+
+    .card {
+        border: none;
+        box-shadow: var(--shadow-main);
+    }
+
+    .contact-details {
+        height: 220px;
+    }
+
+    .message {
+        label {
+            padding: 0 !important;
+            color: var(--text-color);
+        }
+
+        input {
+            width: 100%;
+            padding: 7px;
+            border: 1px solid rgb(201, 197, 197);
+            border-radius: 5px;
+
+            &:focus-visible {
+                outline: 1px solid var(--primary-color);
+            }
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            border: 1px solid rgb(201, 197, 197);
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        button {
+            padding: 10px 0;
+            margin-top: 10px;
+        }
+    }
+
+
+    .border-bottom {
+        padding-bottom: 1rem;
+    }
+
+    .faq{
+        .text-editor{
+            h2{
+                font-size:var(--font-xxl);
+            }
+            h4{
+                font-size:var(--font-lg);
+                margin-bottom:0 !important;
+            }
+            p{
+            font-size:var(--font-md);
+            }
+        }
+    }
+}
+
+.img-logo{
+    display:flex;
+    flex-direction: column;
+    img{
+        width:180px;
+    }
+    .link{
+        color:blue;
+        &:hover{
+            text-decoration: underline !important;
+        }
+    }
+
+}
