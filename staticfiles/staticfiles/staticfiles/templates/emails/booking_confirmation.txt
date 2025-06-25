@@ -1,0 +1,25 @@
+Thank you for your Inquiry, {{ booking.full_name }}!
+
+Tour Details:
+Package: {{ package.sacred_name }}
+Location: {{ package.sacred_location }}
+Duration: {{ package.sacred_days }}
+Booking Date: {{ booking.booking_date }}
+Participants: {{ booking.participants }}
+
+
+
+{% if booking.special_requests %}
+Special Requests: {{ booking.special_requests }}
+{% endif %}
+
+
+{{ package.overview|safe }}
+
+Itinerary Overview:
+{% for item in itineraries %}
+Day {{ forloop.counter }}: {{ item.day_title }}
+{{ item.description|striptags  }}
+{% endfor %}
+
+We'll contact you shortly to confirm your details.

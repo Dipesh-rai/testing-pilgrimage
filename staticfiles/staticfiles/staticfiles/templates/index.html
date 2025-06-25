@@ -1,0 +1,312 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Banner section -->
+{% for n in homedata %}
+<section class="banner">
+    <img src="/media/{{n.banner_img}}" loading="lazy" alt="">
+    <div class="container">
+        <article class="banner-items">
+            <h1 class="banner-heading text-light mt-3">{{n.h1_Name}}</h1>
+            <div class="banner-card mt-4">{{n.short_description}}</div>
+
+            <div class="d-flex mt-3 gap-3">
+                <a href="{% url 'categorypages' %}" class="btn-3">Explore Tours <i
+                        class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="d-flex flex-wrap justify-content-between align-items-center mt-3  gap-5">
+                <div class="banner-card">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="left"><i class="ri-group-line text-2xl text-white"></i></div>
+                        <div class="right">
+                            <div class="small-header">
+                                Small group
+                            </div>
+                            <div class="small-header">
+                                Personal attention guaranteed
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-card">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="left"> <i class="ri-shield-star-line"></i></div>
+                        <div class="right">
+                            <div class="small-header">
+                                Expert Guides
+                            </div>
+                            <div class="small-header">
+                                Buddhist scholars & practitioners
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex mt-3 last gap-3">
+                <div class="small-group"><span class="blur"><i class="ri-group-line text-xl"></i></span> Small
+                    groups</div>
+                <div class="small-group"><span class="blur"><i class="ri-group-line text-xl"></i></span> Small
+                    groups</div>
+            </div>
+
+
+        </article>
+    </div>
+</section>
+{% endfor %}
+
+<!-- choosing section -->
+<section class="choose mt-5">
+    <div class="container">
+        <h2 class="heading-items text-center main">Why Choose us?</h2>
+        <div class="text-center deam">Experience the difference of mindful travel with
+            our expertly curated Buddhist journeys and dedicated team.</div>
+
+
+        <div class=" row mt-4 gy-3">
+            {% for n in servicesData %}
+            <article class="col-xl-3 col-lg-6">
+                <div class="experience">
+                    <div class="p-3">
+                        <div class="icon d-flex justify-content-center align-items-center">
+                            <i class="{{n.service_icon}}"></i>
+                        </div>
+                    </div>
+                    <div class="heading-c main text-center">{{n.service_title}}</div>
+                    <div class="text-center deam my-2">{{n.service_des | safe }}</div>
+                </div>
+            </article>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+<!-- COMMITMENT -->
+{% for n in commitment %}
+<section class="discover mt-5">
+    <div class="container">
+        <div class="row p-0 shadow-main">
+            <div class="col-lg-6 p-0 order-2 order-md-1 p-4">
+                <div class="commit-content">
+                    <div class="commit-heading main">{{n.commitment_heading}}</div>
+                    <div class="my-2 text-ul">
+                        {{n.commitment_description | safe}}
+                    </div>
+                    <button class="btn-1"><a href="{% url 'contact' %}">Contact</a></button>
+                </div>
+            </div>
+            <div class="col-lg-6 p-0 order-1 order-md-2">
+                <img src="/media/{{n.commitment_img}}" loading="lazy" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
+
+<!-- sacred sites -->
+<section class="sacred mt-5">
+    <div class="container">
+        {% for n in category_page %}
+        <h2 class="heading-items text-center">{{ n.home_category_title }}</h2>
+        <div class="text-center deam my-2">{{ n.home_category_shortdecription|safe }}</div>
+            {% endfor %}
+        <div class="sacred-site mt-4">
+                <!-- lumbini -->
+                <div class="owl-carousel owl-theme category">
+
+                {% for n in categories %}
+
+                    <article class="sacred-img border">
+                        <a href="{% url 'sacredsite' %}?category={{n.sacred_slug}}"> <img
+                                src="/media/{{n.category_img}}" loading="lazy" alt=""></a>
+                        <div class="sacred-content">
+                            <div class="sacred-content-header main white-color">{{n.category_name}}</div>
+                            <div class="sacred-content-body white-color line-clamp-simple">{{n.description | safe}}
+                            </div>
+                            <a href="{% url 'sacredsite' %}?category={{n.sacred_slug}}">Learn More <i
+                                    class="fa-solid fa-arrow-right"></i></a>
+                        </div></a>
+                    </article>
+
+                {% endfor %}
+                </div>
+
+
+
+
+            <div class="d-flex justify-content-center align-items-center">
+                <a href="{% url 'categorypages' %}" class="view-all-btn mt-4">View All Sacred Site</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- discover -->
+<section class="discover my-5">
+    <div class="container">
+        {% for n in shortdes %}
+        <div class="row p-0 shadow-main">
+            <div class="col-lg-6 p-0">
+                <img src="/media/{{n.image}}" alt="">
+            </div>
+            <div class="col-lg-6 p-0">
+                <article class="p-3 text-editor">
+                    {{n.description | safe}}
+                    <div class="flex-all-center">
+                        <button class="btn-1"><a href="{% url 'about'  %}">About Us</a></button>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- spritual tour packages -->
+<section class="spritual">
+    <div class="container">
+        {% for n in sacredpage %}
+        <h2 class="heading-items text-center">{{ n.home_sacred_heading }}</h2>
+        <div class="text-center deam my-2">
+            {{ n.home_sacred_shortdescription|safe }}
+        </div>
+        {% endfor %}
+        <!-- spritual items -->
+        <div class="spritual-items">
+            <!-- Tab Navigation -->
+            <ul class="nav nav-pills mb-3 gap-3" id="pills-tab" role="tablist">
+                {% for c in categories %}
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link {% if forloop.first %}active{% endif %}" id="pills-{{c.id}}-tab"
+                        data-bs-toggle="pill" data-bs-target="#pills-{{c.id}}" type="button" role="tab"
+                        aria-controls="pills-{{c.id}}"
+                        aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
+                        {{ c.category_name }}
+                    </button>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <div class="tab-content" id="pills-tabContent">
+                {% for c in categories %}
+                <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" id="pills-{{c.id}}"
+                    role="tabpanel" aria-labelledby="pills-{{c.id}}-tab">
+
+                    <div class="tours mt-5">
+                        <div class="row gy-3">
+                            {% for n in sacredData %}
+                            {% if n.Category.id == c.id %}
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <article class="card half-card shadow-sm">
+                                    <div class="img-part shadow-sm">
+                                        <a href="#">
+                                            <img src="/media/{{n.sacred_image}}" loading="lazy" alt="">
+                                        </a>
+                                        <div class="btnn-1">{{n.sacred_days}} days</div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="normal-heading">{{n.sacred_name}}</div>
+                                        </div>
+                                        <div class="content flex-all-center">
+                                            <p>{{n.sacred_desc | safe}}</p>
+                                        </div>
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <div class="d-flex flex-column">
+                                                <div class="from deam-thiner">From</div>
+                                                <div class="price">$ {{n.sacred_price}}</div>
+                                            </div>
+                                            <button class="btn-1">
+                                                <a href="{% url 'journeyDetails' n.sacred_slug %}">View Journey</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+
+                        <div class="width-100 mt-3 d-flex justify-content-center">
+                            <button class="view-all-btn">
+                                <a href="{% url 'sacredsite' %}?category={{c.sacred_slug}}">View All
+                                    {{c.category_name}}</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+
+        </div>
+    </div>
+
+    </div>
+</section>
+
+<!-- spritual tour packages -->
+<section class="spritual mt-5">
+    <div class="container">
+        {% for n in blogpage %}
+        <h2 class="heading-items text-center">{{ n.home_blog_title }}</h2>
+        <div class="text-center deam my-2">
+           {{ n.home_blog_description|safe }}
+        </div>
+{% endfor %}
+        <!-- spritual items -->
+        <section class="spritual-items mt-4">
+            <div class="tours">
+                <div class="row gy-3">
+                    {% for n in blog %}
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <article class="card half-card-banner shadow-sm">
+                            <div class="img-part shadow-sm">
+                                <a href=""> <img src="/media/{{n.blog_img}}" loading="lazy" alt=""> </a>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="normal-heading">{{n.blog_title}}</div>
+                                </div>
+
+
+                                <div class="content flex-all-center line-clamp">
+                                    <div class="line-clamp-content">{{ n.blog_description | safe }}</div>
+                                </div>
+                                <div class="c-footer w-100">
+                                    <div class="flex-center-between">
+                                        <span class="deam-thin">{{n.created_at|date:"Y-m-d"}}</span>
+                                        <a href="/blog/{{n.blog_slug}}" class="link-tag text-primary">Read More</a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </article>
+                    </div>
+                    {% empty %}
+                    NO data Found
+                    {% endfor %}
+                </div>
+
+                <div class="width-100 mt-3 d-flex justify-content-center">
+
+                    <button class="view-all-btn">
+                        <a href="{% url 'blog' %}">View All Blog</a>
+                    </button>
+
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+    </div>
+
+    </div>
+</section>
+{% endblock %}

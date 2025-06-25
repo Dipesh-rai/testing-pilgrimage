@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+<section class="banner-journey">
+    <img src="/media/{{blogDetails.banner_img}}" alt="{{blogDetails.banner_img_src}}" loading="lazy">
+    <div class="container">
+        <div class="banner-journey-items">
+                
+        </div>
+    </div>
+</section>
+
+<section class="trip-info sacred">
+    <div class="container">
+        <div class="width-800">
+            <article class=" p-0 text-editor">
+                <h1 class="main-heading">{{blogDetails.blog_title}}</h1>
+                {{blogDetails.blog_description | safe}}
+
+
+                {% if faq %}
+                <!-- faq -->
+                <div id="faq">
+                    <h2>FAQ</h2>
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        {% for f in faq %}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading{{ f.id }}">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq{{ f.id }}" aria-expanded="false"
+                                    aria-controls="collapse{{ f.id }}">
+                                    {{f.question}}
+                                </button>
+                            </h2>
+                            <div id="faq{{ f.id }}" class="accordion-collapse collapse"
+                                aria-labelledby="heading{{ f.id }}" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    {{f.answer | safe}}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+                {% endif %}
+
+            </article>
+        </div>
+
+        <div class="background-g p-2 flex-all-center">
+            published on: <b>{{blogDetails.created_at|date:"M d,Y"}}</b>
+        </div>
+    </div>
+</section>
+{% if related_blog %}
+<section>
+    <div class="container">
+
+    <h2 class="text-center my-3">Recent Blog</h2>
+    <div class="row">
+
+        {% for n in related_blog %}
+        <div class="col-lg-4">
+            <article class="card half-card-banner shadow-sm">
+                <div class="img-part shadow-sm">
+                    <a href="/blog/{{n.blog_slug}}"> <img src="/media/{{n.blog_img}}" loading="lazy" alt="{{n.img_src}}"> </a>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="normal-heading">{{n.blog_title}}</div>
+                    </div>
+
+
+                    <div class="content flex-all-center line-clamp">
+                        <div class="line-clamp-content">{{ n.blog_description | safe }}</div>
+                    </div>
+                    <div class="c-footer w-100">
+                        <div class="flex-center-between">
+                            <span class="deam-thin">{{n.created_at|date:"Y-m-d"}}</span>
+                            <a href="/blog/{{n.blog_slug}}" class="link-tag text-primary">Read More</a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </article>
+        </div>
+        {% empty %}
+        NO data Found
+        {% endfor %}
+    </div>
+    </div>
+</section>
+{% endif %}
+
+
+
+{% endblock %}

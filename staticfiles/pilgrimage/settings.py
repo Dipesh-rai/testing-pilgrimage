@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-8!%sqzg6xspytqm8n=jx!8i26mis=0o1e9dk44n0ob4d3avx_a
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # For Vercel deployments
-DEBUG = False  # Set to True temporarily for debugging
+DEBUG = True  # Set to True temporarily for debugging
 ALLOWED_HOSTS = ['.vercel.app', '.now.sh', 'testing-pilgrimage-new.vercel.app']
 # Application definition
 
@@ -127,7 +127,8 @@ from pathlib import Path
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Remove duplicate declaration
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+:root {
+    --primary-color: #DAA520;
+    --secondary-color: #2F4F4F;
+    --banner-card: #807775;
+    --text-color: rgb(80, 77, 77);
+    --icon-color: #F2EDC8;
+    --button-color: #8B7355;
+    --nav-color: #F5F5DC;
+    --heading-color: rgb(47, 79, 79);
+    --deam-color: rgba(47, 79, 79, 0.7);
+    --background-color: #F5F5F0;
+    --light-color:rgba(255, 255, 255, 0.7);
+    --brown-color:#935721;
+    // primary-fonts
+    --primary-font: "Nunito Sans", sans-serif;
+    --secondary-font: "Cormorant Garamond", serif;
+    --ternary-font:"Lato", sans-serif;
+    --join-fonts: "Pacifico", cursive;
+
+    // font-size
+
+    --font-xsm:0.625rem;
+    /*10px*/
+    --font-sm: 0.75rem;
+    /* 12px */
+    --font-md: 0.875rem;
+    /* 14px */
+    --font-lg: 1rem;
+    /*16px*/
+    --font-xl: 1.25rem;
+    /*20px*/
+    --font-xxl: 1.5rem;
+    /*24 px*/
+    --font-xxxl: 1.875rem;
+    /*30px*/
+    --font-heading: 2.25rem; //36px
+
+    // box-shadow
+    --shadow-lgg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+    --shadow-main:0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
