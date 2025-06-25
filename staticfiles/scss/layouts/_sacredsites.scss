@@ -1,0 +1,131 @@
+.banner-next {
+    height: 45vh;
+    position: relative;
+
+    img{
+            filter: brightness(90%);
+    }
+
+
+    .banner-content-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+
+        .heading-items {
+            color: white !important;
+        }
+
+    }
+}
+
+.sacred {
+    font-size: var(--font-md);
+
+ 
+    .content-top {
+        border-bottom: 1px solid rgb(216, 206, 206);
+    }
+
+    .secondary-type-heading {
+        box-shadow: var(--shadow-lgg) !important;
+        z-index: 5;
+        position: relative;
+    }
+    .top-align{
+        input{
+            border: 1px solid rgb(235, 222, 222);
+            padding:5px;
+            color:rgb(138, 133, 133);
+            &:focus-visible{
+                outline:none;
+            }
+        }
+        .btn-1{
+            border-radius: 0 !important;
+        }
+
+    }
+
+    .background-g {
+        color: var(--deam-color);
+
+        .side-nav {
+
+            li {
+                text-decoration: underline;
+                padding: 10px 10px 0 10px;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    i {
+                        font-size: var(--font-md);
+                    }
+
+
+                }
+
+                &:hover {
+                    color: var(--primary-color);
+                }
+
+                &:last-child {
+                    padding-bottom: 10px;
+                }
+            }
+
+
+
+
+        }
+
+    }
+
+    .inquiry {
+        form {
+            // position: relative;
+
+            input {
+                color: var(--text-color);
+                padding: 5px;
+                border: none;
+                border-radius: 5px;
+                font-size: var(--font-md);
+
+                &:focus-visible {
+                    outline: none;
+                    box-shadow: var(--shadow-lgg);
+                }
+            }
+
+            textarea {
+                padding: 5px;
+                height: 90px;
+                border: none;
+                border-radius: 5px;
+                font-size: var(--font-md);
+
+                &:focus-visible {
+                    outline: none;
+                    box-shadow: var(--shadow-lgg);
+                }
+            }
+
+            button {
+                box-shadow: var(--shadow-lgg) !important;
+            }
+        }
+
+    }
+
+
+
+
+    .media-items {
+        @include flex-center;
+    }
+}

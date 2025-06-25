@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<main>
+
+    <!-- banner -->
+    <section class="banner-next">
+        <img src="static/img/banner.jpg" loading="lazy" alt="">
+        <div class="banner-content-next">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="heading-items">Sacred Sites To Explore</div>
+                        <div class="dark-light">From ancient caves to mountaintop monasteries, these sacred sites
+                            are more
+                            than just places </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="sacred mt-5">
+        <div class="container">
+            <div class="row gy-3">
+                <div class="col-lg-9">
+                    <div class="content-top">
+                        <h2 class="heading-second">Welcome to the Sacred Land of Enlightenment</h2>
+                        <p class="mt-1">Nepal, the birthplace of the Buddha, is a land where spiritual energy flows
+                            through
+                            ancient monasteries, peaceful stupas, and quiet mountain paths. Though small in size,
+                            Nepal
+                            holds deep spiritual importance, attracting seekers and pilgrims from around the world
+                            in
+                            search
+                            of peace, wisdom, and inner clarity.</p>
+
+                        <p class="mt-1">From pilgrimage walks and cultural tours to meditation retreats and sacred
+                            site
+                            visits, Nepal offers a range of meaningful Buddhist experiences.</p>
+                    </div>
+                    <div class="sacred-sites">
+                        <div class="d-flex justify-content-between align-items-center py-3">
+                            <div class="heading-items">Sacred Sites</div>
+                            <div class="d-flex top-align"><input type="text"> <button type="submit" class=" btn-1"><i
+                                        class="fa-solid fa-magnifying-glass"></i></button></div>
+                        </div>
+                        <div class="row p-0 gy-4">
+                          {% for n in activityDetails %}
+                            <div class="col-lg-4">
+                                <article class="card half-card shadow-sm">
+                                    <div class="img-part shadow-sm">
+                                        <a href=""> <img src="/media/{{n.sacred_image}}"></a>
+                                        <div class="btnn-1">dsa</div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="normal-heading">{{n.sacred_name | safe}}</div>
+
+                                        </div>
+
+                                        <div class="content flex-all-center">
+                                            <p>{{n.sacred_desc | safe}}</p>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <div class="d-flex flex-column">
+                                                <div class="from deam-thiner">From</div>
+                                                <div class="price">$ {{n.sacred_price | safe}}</div>
+                                            </div>
+                                            <button class="btn-1"> <a href="/activities/{{n.sacred_slug}}">View Journey</a></button>
+                                        </div>
+                                    </div>
+
+                                </article>
+                            </div>
+                            {% endfor %}
+                              <!-- {% for n in sacredData %} -->
+                            <!-- {% endfor %} -->
+
+                        </div>
+
+                        <nav aria-label="Page navigation example border ">
+                            <ul class="pagination justify-content-center my-4">
+                                <li class="page-item disabled">
+                                    <a class="page-link">Previous</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="height-100">
+                        <div class="sticky">
+                            <div class="d-flex flex-column gap-3">
+
+                                <div class=" background-g shadow-main  border-radius-5 p-0">
+                                    <div class="secondary-type-heading background-nav p-3">Buddist Practices</div>
+                                    <ul class="side-nav p-0 ul-relative ">
+                                        <li><a href=""> <span class="ul-absolute"><i
+                                                        class="fa-solid fa-hands-praying"></i></span>Meditation </a>
+                                        </li>
+                                        <li><a href=""><span class="ul-absolute"><i class="fa-solid fa-bell"></i></span>
+                                                Singing
+                                                Bowl Therapy</a></li>
+
+                                        <li><a href=""><span class="ul-absolute"><i
+                                                        class="fa-solid fa-vihara"></i></span>Prayer
+                                                & Chanting</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class=" background-g shadow-main border-radius-5 p-0">
+                                    <div class="secondary-type-heading background-nav p-3">Why Choose us?</div>
+                                    <ul class="side-nav p-0 ul-relative ">
+                                        <li><a href=""><span class="ul-absolute"><i
+                                                        class="fa-solid fa-handshake"></i></span>About us</a></li>
+                                        <li><a href=""><span class="ul-absolute"><i
+                                                        class="fa-brands fa-whatsapp"></i></span> Contact us in
+                                                Whats
+                                                App</a></li>
+                                    </ul>
+                                </div>
+
+
+                                <!-- inquiry -->
+                                <div class=" inquiry shadow-main border-radius-5 p-0">
+                                    <div class="secondary-type-heading background-nav p-3">Need More Info?</div>
+                                    <form action="" class="d-flex flex-column gap-2 background-g p-3">
+                                        <input type="text" placeholder="Your Name">
+                                        <input type="text" placeholder="Enter Your Email">
+                                        <textarea name="" id="" placeholder="Enter your Message"></textarea>
+                                        <button class="btn-1">Submit</button>
+                                    </form>
+                                </div>
+
+                                <!-- follow -->
+                                <div class="shadow-main border-radius-5">
+                                    <div class="secondary-type-heading background-nav p-3">Follow us on</div>
+                                    <div class="d-flex gap-3 align-items-center background-g p-4">
+                                        <a href=""><i class="media-items fa-brands fa-facebook-f"></i></a>
+                                        <a href=""><i class="media-items fa-brands fa-instagram"></i></a>
+                                        <a href=""><i class="media-items fa-brands fa-whatsapp"></i></a>
+                                        <a href=""><i class="media-items fa-brands fa-youtube"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Subscription -->
+    <section class="subscription py-5 mt-5">
+        <div class="container">
+            <div class="heading-items text-center text-white">Begin Your Spiritual Journey</div>
+            <div class="text-center">Subscribe to receive mindful travel inspiration, meditation guidance, and
+                exclusive
+                offers on our Buddhist
+                tours and retreats.</div>
+            <form action="" class="mt-4">
+                <div class="d-flex flex-wrap w-100 justify-content-center gap-3">
+                    <input type="text" placeholder="Your email address">
+                    <button class="btn-2">Subscribe</button>
+                </div>
+            </form>
+            <div class="text-center small py-2">By subscribing, you agree to receive our newsletter </div>
+            <div class="text-center small">and accept our Privacy Policy.</div>
+        </div>
+    </section>
+
+</main>
+
+{% endblock %}

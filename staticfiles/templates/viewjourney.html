@@ -1,0 +1,547 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+<section class="banner-journey">
+    <img src="/media/{{journeyDetails.banner_image}}" alt="{{journeyDetails.src_bannerimage}}" loading="lazy">
+    <div class="container">
+        <div class="banner-journey-items">
+            <h1 class="main-heading">{{journeyDetails.sacred_name}}</h1>
+        </div>
+    </div>
+</section>
+
+<section class="trip-info">
+    <!-- <div class="heading-trip-info display-none" id="trip_heading">
+        <div class="container">
+            <a class="rounded" href="#trip-facts">Trip-Facts</a>
+            <a class="rounded" href="#overview">Overview</a>
+            <a class="rounded" href="#itinerary">Itinerary</a>
+            <a class="rounded" href="#price-include">Price Include</a>
+            <a class="rounded" href="#faq">FAQ</a>
+        </div>
+    </div> -->
+    <div class="container">
+        <div class="row">
+            <article class="col-lg-8 text-editor border-bottom">
+                <!-- <div data-bs-spy="scroll" data-bs-target="#simple-list-example" data-bs-offset="0"
+                    data-bs-smooth-scroll="true" class="content-trip" tabindex="0"> -->
+                <!-- trip-facts -->
+                <div id="trip-facts">
+                    <h1 class=""></h1>
+                    <!-- <div class="adviser-part">
+                        <div class="d-flex gap-1 align-items-center">
+                            <i class="fa-solid fa-circle"></i>
+                            <i class="fa-solid fa-circle"></i>
+                            <i class="fa-solid fa-circle"></i>
+                            <i class="fa-solid fa-circle"></i>
+                            <i class="fa-solid fa-circle"></i>
+                            <a href="">Review in Trip Adviser</a>
+
+                            <div class="love"><i class="fa-solid fa-heart"></i></div>
+                            Recommended by 99% of traveler
+                        </div>
+                    </div> -->
+                    <div class="trip-info-content mt-2">
+                        <div class="row gy-3">
+                            <!-- location -->
+                            {% if journeyDetails.Destination %}
+                            <div class="col-md-4">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-map-location-dot"></i>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <div class="item-deam deam">Destination</div>
+                                        <div class="item-bold deam"><b>{{journeyDetails.Destination}}</b></div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            <!-- time -->
+                            {% if journeyDetails.Total_Duration %}
+                            <div class="col-md-4">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-clock"></i>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <div class="item-deam deam">Total Duration</div>
+                                        <div class="item-bold deam"><b>{{journeyDetails.sacred_days}} Days</b></div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            <!-- best time -->
+                            {% if journeyDetails.Besttime %}
+                            <div class="col-md-4">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <div class="item-deam deam">Best Time</div>
+                                        <div class="item-bold deam"><b>{{journeyDetails.Besttime}}</b></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            {% endif %}
+                            <!-- trip grade -->
+                            {% if journeyDetails.TripGrade %}
+                            <div class="col-md-4">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-signal"></i>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <div class="item-deam deam">Trip Grade</div>
+                                        <div class="item-bold deam"><b>{{journeyDetails.TripGrade}}</b></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            {% endif %}
+                            <!-- Transportation -->
+                            {% if journeyDetails.Transportation %}
+                            <div class="col-md-4">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-bus"></i>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <div class="item-deam deam">Transportation</div>
+                                        <div class="item-bold deam"><b>{{journeyDetails.Transportation}}</b></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            {% endif %}
+                            <!-- accommodation -->
+                            {% if journeyDetails.Accommodation %}
+                            <div class="col-md-4">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-hotel"></i>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <div class="item-deam deam">Accommodation</div>
+                                        <div class="item-bold deam"><b>{{journeyDetails.Accommodation}}</b>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            {% endif %}
+                            <!-- guide -->
+                            {% if journeyDetails.Style %}
+                            <div class="col-md-4">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-hands-holding-child"></i>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <div class="item-deam deam">Style</div>
+                                        <div class="item-bold deam"><b>{{journeyDetails.Style}}</b></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            {% endif %}
+                            <!-- meal -->
+                            {% if journeyDetails.Meals %}
+                            <div class="col-md-4">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-utensils"></i>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <div class="item-deam deam">Meals</div>
+                                        <div class="item-bold deam"><b>{{journeyDetails.Meals}}</b></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            {% endif %}
+                            <!-- group -->
+                            {% if journeyDetails.MinGroupSize %}
+                            <div class="col-md-4">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-users-between-lines"></i>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <div class="item-deam deam">Min Group Size</div>
+                                        <div class="item-bold deam"><b>{{journeyDetails.MinGroupSize}}</b></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            {% endif %}
+                            {% if journeyDetails.courseduration %}
+                            <div class="col-md-4">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-clock"></i>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <div class="item-deam deam">Course Duration</div>
+                                        <div class="item-bold deam"><b>{{journeyDetails.courseduration}}</b></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <!-- overview -->
+                <div id="overview" class="mt-3">
+                    {{journeyDetails.overview | safe}}
+                </div>
+                <!-- itinerary -->
+                {% if itineraries %}
+                <div id="itinerary">
+                    <h2 class="">Itinerary</h2>
+                    <div class="accordion accordion-flush border-bottom" id="accordionFlushExample">
+                        {% for n in itineraries %}
+                        <div class="accordion-item" id="heading{{ n.id }}">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-white border-top collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ n.id }}"
+                                    aria-expanded="false" aria-controls="flush-collapseOne{{ n.id }}">
+                                    {{ n.day_title }}
+                                </button>
+                            </h2>
+                            <div id="flush-collapseOne{{ n.id }}" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">{{n.description|safe }}</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% for n in discount %}
+                <div>
+                    {{n.min_participants}},{{n.max_participants}},{{n.discount_per_pax}},{{discount_type }}
+                </div>
+                {% endfor %}
+
+                {% if gallery %}
+                <div class="galery-part">
+
+                    <h2>Gallery</h2>
+
+                    <div class="gallery">
+                        {% for g in gallery %}
+                        <div class="gallery-items" data-index="0">
+                            <img src="/media/{{g.img}}" alt="{{g.img_src}}" class="gallery-img" loading="lazy">
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="lightbox" id="lightbox">
+                        <span class="close-btn">&times;</span>
+                        <div class="lightbox-content">
+                            <img src="" alt="" class="lightbox-img" id="lightbox-img">
+                            <div class="lightbox-nav">
+                                <button class="prev-btn">&#10094</button>
+                                <button class="next-btn">&#10095</button>
+                            </div>
+                            <div class="image-info" id="image-info"></div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                <!-- include and exclude -->
+                <div id="price-include" class="mt-4 border-bottom">
+
+                    <h2 class="secondary-type-heading">Price Includes</h2>
+
+                    {{journeyDetails.include | safe}}
+
+                    <h2>Price Excludes</h2>
+
+                    <div class="price-exclude">
+                        {{journeyDetails.exclude | safe}}
+                    </div>
+                </div>
+
+
+                <!-- map -->
+                <div class="map">
+
+                </div>
+                {% if faq %}
+                <!-- faq -->
+                <div id="faq">
+                    <h2>FAQ</h2>
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        {% for f in faq %}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading{{ f.id }}">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq{{ f.id }}" aria-expanded="false"
+                                    aria-controls="collapse{{ f.id }}">
+                                    {{f.question}}
+                                </button>
+                            </h2>
+                            <div id="faq{{ f.id }}" class="accordion-collapse collapse"
+                                aria-labelledby="heading{{ f.id }}" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    {{f.answer | safe}}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+                {% endif %}
+                <!-- </div> -->
+
+            </article>
+
+            <div class=" col-lg-4 information-content">
+                <div class="height-100">
+                    <div class="sticky-60">
+                        <div class="sticky-part">
+                            <div class="card price-exclusive">
+                                <div class="d-flex justify-content-center align-items-center flex-column gap-2">
+                                    <b class="heading-type"> Comprehensive Package From</b>
+                                    <p class="plann">{{journeyDetails.sacred_days}} Days Exclusive Trip</p>
+                                    <p><b>${{journeyDetails.sacred_price}}</b> / per person</p>
+
+                                    <button class="simple-btn  flex-all-center gap-2" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                                        aria-expanded="false" aria-controls="collapseExample">
+                                        <p>Group Size</p> +
+                                    </button>
+
+                                    <div class="collapse" id="collapseExample">
+                                        <div class=" background-gg border-radius-5">
+                                            <div class="background-nav flex-center-between">
+                                                <div class="normal-heading"> No of People</div>
+                                                <div class="normal-heading"> Group Per Discount</div>
+                                            </div>
+                                            <ul class="side-nav">
+                                                {% for d in discounts %}
+                                                <li class="flex-center-between deam">
+                                                    <div class="pax">{{d.numberofpeople}} Pax</div>
+                                                    <div class="pax-cost">USD ${{d.price}}</div>
+                                                </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                        Send Inquiry
+                                    </button>
+
+
+                                </div>
+
+                            </div>
+                            <!-- why book with us -->
+                            <div class="card mt-3">
+                                <div class="flex-column-center">
+                                    <div class="second-heading border-bottom w-100 text-center">Why Choose us?</div>
+                                    <ul>
+
+                                        <li><img src="/static/img/best-price.svg" alt="best-price" class="img-small"></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <!-- conatact info -->
+                            <div class="card mt-3 p-4">
+                                <h2 class="heading-tag text-center">Quick Contact to </h2>
+                                {% for n in logo %}
+                                <h1 class="header text-center border-bottom-dark padding-bottom">
+                                        {{ n.logo_name }}</h1>
+                                {% endfor %}
+                                {% for n in contactpage %}
+                                <div class="flex-column-center mt-2 gap-2">
+                                    <p><b>First Name</b></p>
+                                    <a href="https://wa.me/{{ n.whatsapp_number }}" target="_blank"
+                                        class="d-flex align-items-center"><i class=" fa-brands fa-whatsapp"></i>
+                                        {{ n.whatsapp_number }}</a>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        <a href="mailto:{{n.email}}">{{n.email}}</a>
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+{% if related_sites %}
+<div class="similar-trip mt-5">
+    <div class="container">
+        <div class="heading-second">Similar Trip</div>
+        <div class="row p-0 gy-4 mt-1">
+            {% for s in related_sites %}
+            <div class="col-lg-4">
+                <article class="card half-card shadow-sm">
+                    <div class="img-part shadow-sm">
+                        <a href="{% url 'journeyDetails' s.sacred_slug %}"><img src="/media/{{s.sacred_image}}"
+                                alt="{{s.sacred_img_src}}" loading="lazy" width="600" height="400"></a>
+                        <div class="btnn-1">{{s.sacred_days}} days</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="normal-heading">{{s.sacred_name}}</div>
+                        <div class="content">
+                            {{s.sacred_desc | safe}}
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex flex-column">
+                                <div class="from deam-thiner">From</div>
+                                <div class="price">$ {{s.sacred_price}}</div>
+                            </div>
+
+                            <button class="btn-1" class="btn-1"> <a href="{% url 'journeyDetails' s.sacred_slug %}">View
+                                    Journey</a></button>
+                        </div>
+                    </div>
+
+                </article>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                <h3 class="mid-heading text-center">Make an Inquiry for</h3>
+                <p class="text-big text-center">{{journeyDetails.sacred_name | safe}}</p>
+
+                <form id="bookingForm" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="package" value="{{ journeyDetails.id }}">
+
+                    <div class="flex-column gap-2">
+
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" name="full_name" class="form-input-dec" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" class="form-input-dec" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" name="phone" class="form-input-dec" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Booking Date</label>
+                            <input type="date" name="booking_date" class="form-input-dec" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Number of Participants</label>
+                            <input type="number" name="participants" min="1" class="form-input-dec" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Special Requests</label>
+                            <textarea name="special_requests" class="form-input-dec" rows="3"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Send Inquiry</button>
+                    </div>
+                </form>
+
+                <div id="bookingResponse" class="mt-3"></div>
+
+                <script>
+                    document.getElementById('bookingForm').addEventListener('submit', function (e) {
+                        e.preventDefault();
+                        const form = this;
+                        const responseDiv = document.getElementById('bookingResponse');
+
+                        // Show loading state
+                        responseDiv.innerHTML = `
+        <div class="alert alert-info">
+            Processing your booking...
+            <div class="spinner-border spinner-border-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    `;
+
+                        fetch(window.location.href, {
+                            method: 'POST',
+                            body: new FormData(form),
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRFToken': '{{ csrf_token }}'
+                            }
+                        })
+                            .then(response => {
+                                if (!response.ok) {
+                                    return response.json().then(err => { throw err; });
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                if (data.status === 'success') {
+                                    responseDiv.innerHTML = `
+                <div class="alert alert-success">
+                    ${data.message}
+                </div>
+            `;
+                                    form.reset();
+                                } else {
+                                    let errors = '';
+                                    if (data.errors) {
+                                        for (const field in data.errors) {
+                                            errors += `${data.errors[field].join('<br>')}<br>`;
+                                        }
+                                    }
+                                    responseDiv.innerHTML = `
+                <div class="alert alert-danger">
+                    ${data.message || 'Please correct the following errors:'}
+                    ${errors}
+                </div>
+            `;
+                                }
+                            })
+                            .catch(error => {
+                                responseDiv.innerHTML = `
+            <div class="alert alert-danger">
+                An error occurred. Please try again.
+            </div>
+        `;
+                            });
+                    });
+                </script>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+asgiref==3.8.1
+Django==5.2.1
+django-autoslug==1.9.9
+django-tinymce==4.1.0
+sqlparse==0.5.3
+tzdata==2025.2
+gunicorn==21.2.0  # REQUIRED for Vercel
+psycopg2-binary==2.9.9  # Needed for database
+whitenoise==6.6.0  # For static files
