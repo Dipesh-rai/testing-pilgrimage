@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- banner -->
+{% for n in contactpage %}
+<section class="banner-next">
+    <img src="/media/{{n.banner_image}}" alt="">
+    <div class="banner-content-next">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1 class="heading-items">Contact us</h1>
+                    <div class="dark-light">{{n.contact_des}}</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endfor %}
+
+<main class="contact">
+    <div class="container">
+        {% for n in contactpage %}
+        <section class="contact-headings">
+            <h1 class="heading-items text-center py-2 mt-5">{{n.second_heading}}</h1>
+            <p class="text-center">{{n.short_description}}</p>
+        </section>
+
+        <section class="contact-info mt-5">
+            <div class="row py-3 gy-3">
+
+                <div class="col-md-4">
+                    <article
+                        class="contact-details card d-flex align-items-center justify-content-center shadow-main p-4 gap-2">
+                        <div class="icon"><i class="fa-solid fa-phone"></i></div>
+                        <div class="second-heading">Call Us</div>
+                        <div class="text-center">
+                            <div class="content-contact deam">
+                                <a href="tel:{{n.telephone_number_first}}"
+                                    class="underline-items">{{n.telphone_number_1}}</a>
+                            </div>
+                            <div class="content-contact deam"><a href="tel:{{n.telephone_number_second}}"
+                                    class="underline-items">{{n.telephone_number_2}}</a></div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-4">
+                    <article
+                        class="contact-details card d-flex align-items-center justify-content-center shadow-main p-4 gap-2">
+                        <div class="icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div class="second-heading">{{n.Email_us_name}}</div>
+                        <div class="text-center">
+                            <div class="content-contact deam"><a href="mailto:{{n.email}}"
+                                    class="underline-items">{{n.email}}</a></div>
+                            <div class="content-contact deam"><a href="mailto:{{n.email_2}}"
+                                    class="underline-items">{{n.email_2}}</a></div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-4">
+                    <article
+                        class="contact-details card d-flex align-items-center justify-content-center shadow-main p-4 gap-2">
+                        <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="second-heading">{{n.Visit_us_name}}</div>
+                        <div class="text-center">
+                            <div class="content-contact deam">{{n.location_street}}</div>
+                            <div class="content-contact deam">{{n.location_city}}</div>
+                            <div class="content-contact deam">{{n.country}}</div>
+                            <div class="content-contact text-primary"><a href="{{n.location_address_name}}"
+                                    class="underline-items" target="_blank" rel="noopener noreferrer">Go to location</a></div>
+                        </div>
+                    </article>
+                </div>
+
+
+        </section>
+        {% endfor %}
+        <section class="message mt-5">
+            <div class="row">
+
+                <!-- contact form -->
+                <div class="col-lg-6 order-2 order-md-1 p-3">
+                    <div class="card p-4">
+                        <div id="contactFormContainer">
+                            <h2 class="secondary-type-heading form-title">Send Us a Message</h2>
+                            <!-- Added form-title class -->
+                            <form id="contactForm" method="post" action="{% url 'contact' %}">
+                                {% csrf_token %}
+                                <div class="d-flex flex-column gap-2">
+                                    {{ forms.as_p }}
+                                    <button type="submit" class="btn-1">
+                                        <span class="submit-text">Send Message <i
+                                                class="fa-solid fa-location-arrow"></i></span>
+                                        <span class="spinner" style="display:none;">
+                                            <span class="spinner-border spinner-border-sm" role="status"
+                                                aria-hidden="true"></span>
+                                            Sending...
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="successMessage" style="display: none;">
+                            <h2 class="secondary-type-heading">Thank You</h2>
+                            <p class="mb-0 text-success">Your message has been sent successfully.</p>
+                        </div>
+                    </div>
+                </div>
+                {% for n in contactpage %}
+                <!-- contact details -->
+                <div class="col-lg-6 order-1 order-md-2 p-3">
+                    <div class="card p-3">
+                        <div class="secondary-type-heading">Office Hours</div>
+                        <div class="d-flex justify-content-between border-bottom">
+                            <div class="deam-thin">{{n.office_opendays}}</div>
+                            <div class="time">{{n.office_time}}</div>
+                        </div>
+                        <div class="normal-heading mt-3">{{n.short_heading_office}}</div>
+                        <div class="deam-thin">{{n.short_description}}</div>
+
+                    </div>
+                    <div class="card p-3 mt-2">
+                        <div class="mainlink">
+                        <div class="normal-heading text-center">This is website 2.Our main website is Asia Buddhist & Trek</div>
+                       <a href="https://www.asiabuddhisttours.com/" target="_blank" class="img-logo align-items-center"><img src="/static/img/asia-buddhist-logo.png" alt=""> <div class="link">click link to visit.</div></a>
+                        </div>
+                    </div>
+                    <div class="card p-3 mt-3">
+                       <div class="secondary-type-heading text-center">Connect With Us</div>
+                        <div class="d-flex gap-3 align-items-center justify-content-center mt-3">
+                              <a href="https://www.facebook.com/AsiaBuddhistTours" target="_blank"><i class="media-items fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/nirvana__journey/" target="_blank"><i class="media-items fa-brands fa-instagram"></i></a>
+                        {% for n in contactpage %}
+                        <a href="https://wa.me/{{ n.whatsapp_number }}" target="_blank"><i class="media-items fa-brands fa-whatsapp"></i></a>
+                        {% endfor %}
+                        <a href=""><i class="media-items fa-brands fa-tiktok"></i></a>
+                        <a href="https://www.youtube.com/channel/UCIkdaWLZl-fTsmS8EVSVjZg" target="_blank"><i class="media-items fa-brands fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+                {% endfor %}
+
+
+
+
+            </div>
+        </section>
+
+        <section>
+            <div class="map-items shadow-sm">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.171228930919!2d85.30763621092883!3d27.711999025187016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19e71abc33e7%3A0x8d2d1328e6f6f2c0!2sAsia%20Buddhist%20Tours%20%26%20Treks%20Pvt.%20Ltd.!5e0!3m2!1sen!2snp!4v1748342942097!5m2!1sen!2snp"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade" load="lazy"></iframe>
+            </div>
+        </section>
+
+        {% for n in contactpage %}
+        <section>
+            <div class="faq my-5">
+                <!-- faq -->
+                <div class="card p-3">
+                    <article class="text-editor p-3">
+                        {{n.FAQ | safe}}
+                    </article>
+                </div>
+            </div>
+        </section>
+        {% endfor %}
+
+    </div>
+</main>
+
+
+{% endblock %}

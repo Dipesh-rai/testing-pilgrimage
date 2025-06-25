@@ -1,0 +1,315 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- bootstrap-file -->
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'static/css/owl.theme.default.min.css' %}">
+
+    <!-- icon -->
+    <script src="https://kit.fontawesome.com/6f4be6c4fc.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+
+    <!-- js -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</head>
+
+<body>
+
+    <!-- header section -->
+    <header class="site-header">
+        <div class="top-header">
+            <div class="container">
+                {% for n in contactpage %}
+                <div class="flex-center-between">
+                    <div class="d-flex gap-2 align-items-center left-top-header">
+                        <div class="flex-align-center padding-right border-right gap-1">
+                            <i class="fa-solid fa-phone"></i>
+                            <a href="tel:{{n.telephone_number_first}}">{{n.telphone_number_1}},</a>
+                            <a href="tel:{{n.telephone_number_second}}">{{n.telephone_number_2}}</a>
+
+                        </div>
+                        <div class="flex-align-center padding-right border-right gap-1">
+                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:{{n.email}}">{{n.email}}</a>
+                        </div>
+                        <div class="flex-align-center gap-1">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <a href="{{n.location_address_name}}" target="_blank"
+                                rel="noopener noreferrer">{{n.location_street}}, {{n.country}}</a>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-3 align-items-center">
+                        <a href="https://www.facebook.com/AsiaBuddhistTours" target="_blank"><i
+                                class="header-media fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/nirvana__journey/" target="_blank"><i
+                                class="header-media fa-brands fa-instagram"></i></a>
+                        {% for n in contactpage %}
+                        <a href="https://wa.me/{{ n.whatsapp_number }}" target="_blank"><i
+                                class="header-media fa-brands fa-whatsapp"></i></a>
+                        {% endfor %}
+                        <a href=""><i class="fa-brands fa-tiktok"></i></i></a>
+                        <a href="https://www.youtube.com/channel/UCIkdaWLZl-fTsmS8EVSVjZg" target="_blank"><i class="header-media fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        <div class="main-nav">
+            <div class="container">
+                <div class="top d-flex flex-wrap justify-content-between align-items-center">
+                    {% for n in logo %}
+                    <h1 class="header"><a href="/">{{ n.logo_name }}</a></h1>
+                    {% endfor %}
+                    <nav class="desktop-nav">
+                        <ul class="d-flex gap-5 align-items-center">
+                            <li><a href="/">Home</a></li>
+                            <li>
+                                <div class="d-flex gap-2 align-items-center">
+                                    <a href="{% url 'categorypages' %}">Sacred Sites & Buddhist Activities</a><a class="btn p-0"
+                                        data-bs-toggle="collapse" href="#multiCollapseExample1" role="button"
+                                        aria-expanded="false" aria-controls="multiCollapseExample1"><i
+                                            class="fa-solid fa-chevron-down"></i></a>
+                                </div>
+                                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                    <div class="dropdown">
+                                        <div class="d-flex flex-column">
+                                            {% for n in categories %}
+                                            <div class="option flex-space-between gap-4">
+                                                <a href="{% url 'sacredsite' %}?category={{n.sacred_slug}}">
+                                                    <div class="d-flex align-items-center gap-3">
+                                                        <div
+                                                            class="icon  d-flex align-items-center justify-content-center">
+                                                            <img src="/media/{{n.category_img}}" alt="" class="nav-img">
+                                                        </div>
+                                                        <div class="flex-space-between">
+                                                            <div class="dropdown-heading main">{{n.category_name}}
+                                                            </div>
+                                                            <span class="badge bg-secondary ms-2">{{n.sacredsite.count}}
+                                                                items</span>
+                                                        </div>
+
+                                                    </div>
+                                                </a>
+                                                <i class="fa-solid fa-angle-right"></i>
+                                                <div class="side-bar">
+                                                    <ul class="black flex-column gap-2 shadow-main">
+                                                        {% for s in n.sacredsite.all %}
+                                                        <li class="p-2 nav-width">
+                                                            <a href="{% url 'journeyDetails' s.sacred_slug %}">
+                                                                <div class="d-flex gap-3 align-items-center">
+                                                                    <img src="media/{{s.sacred_image}}" alt=""
+                                                                        class="nav-img">
+                                                                    <div class="flex-column">
+                                                                        {{s.sacred_name}}
+                                                                        <small class="text-muted d-block"><i
+                                                                                class="fa-solid fa-location-dot"></i>
+                                                                            {{s.sacred_location}}</small>
+
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        {% empty %}
+                                                        <li class="p-2">No sacred sites.</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="d-flex gap-2 align-items-center">
+                                    <a href="{% url 'blog' %}">Blog</a>
+                                </div>
+
+                            </li>
+                            <li>
+                                <div class="d-flex gap-2 align-items-center">
+                                    <a href="{% url 'about'  %}">About us</a><a class="btn p-0"
+                                        data-bs-toggle="collapse" href="#multiCollapseExample3" role="button"
+                                        aria-expanded="false" aria-controls="multiCollapseExample3"><i
+                                            class="fa-solid fa-chevron-down"></i></a>
+                                </div>
+                                <div class="collapse multi-collapse" id="multiCollapseExample3">
+                                    <div class="dropdown">
+                                        <div class="d-flex flex-column">
+                                            <div class="d-flex flex-column">
+                                                <div class="option">
+                                                    <a href="{% url 'ourmission' %}">
+                                                        Our Mission
+                                                    </a>
+
+                                                </div>
+                                                <div class="option">
+                                                    <a href="{% url 'whytravel' %}">
+                                                        Why choose us?
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </li>
+                            <li><a href="{% url 'contact' %}">Contact</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="journey flex-align-center gap-2">
+                        {% for n in contactpage %}
+                        <div class="whatsapp"><a class="flex-align-center gap-2"
+                                href="https://wa.me/{{ n.whatsapp_number }}" target="_blank"><img
+                                    src="{% static 'img/whatsapp.svg' %}" alt="">{{ n.whatsapp_number }}</a></div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="menu">
+                        <a href=""><img src="{% static 'img/whatsapp.svg' %}" alt=""></a>
+                        <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                            aria-controls="offcanvasRight"><i class="fa-solid fa-bars"></i></button>
+
+                    </div>
+
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                        aria-labelledby="offcanvasRightLabel">
+                        <div class="offcanvas-header">
+                            <button type="button" class="btn-close white-close" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+
+                        </div>
+                        <div class="offcanvas-body p-0">
+                            <div class="trigger_nav">
+                                <nav>
+                                    <ul class="d-flex flex-column">
+                                        <li class="nav-item"><a href="index.html">Home</a></li>
+                                        <li class="nav-item">
+                                            <div class="d-flex justify-content-between align-items-center ">
+                                                <a class="nav-link" href="{% url 'categorypages' %}">Sacred Sites & Buddhist Activities</a>
+                                                <button class="btn btn-link" type="button" data-bs-toggle="collapse"
+                                                    data-bs-target="#sacredSitesCollapse" aria-expanded="false"
+                                                    aria-controls="sacredSitesCollapse">
+                                                    <i class="fas fa-chevron-down"></i>
+                                                </button>
+                                            </div>
+
+                                            <div class="collapse" id="sacredSitesCollapse">
+                                                <ul class="nav flex-column gap-1">
+                                                    {% for category in categories %}
+                                                    <li class="nav-item header-nav-link">
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <a class="nav-link p-0"
+                                                                href="{% url 'sacredsite' %}?category={{category.sacred_slug}}">
+                                                                <div class="d-flex align-items-center gap-3 p-0">
+                                                                    {% if category.category_img %}
+                                                                    <img src="/media/{{category.category_img}}" alt=""
+                                                                        class="nav-img">
+                                                                    {% endif %}
+                                                                    {{category.category_name}}
+                                                                    <span
+                                                                        class="badge bg-secondary ms-2">{{category.sacredsite.count}}</span>
+                                                                </div>
+                                                            </a>
+                                                            {% if category.sacredsite.exists %}
+                                                            <button class="btn btn-link" type="button"
+                                                                data-bs-toggle="collapse"
+                                                                data-bs-target="#tours-{{category.id}}"
+                                                                aria-expanded="false"
+                                                                aria-controls="tours-{{category.id}}">
+                                                                <i class="fas fa-chevron-right"></i>
+                                                            </button>
+                                                            {% endif %}
+                                                        </div>
+
+                                                        {% if category.sacredsite.exists %}
+                                                        <div class="collapse" id="tours-{{category.id}}">
+                                                            <ul class="nav flex-column gap-1">
+                                                                {% for site in category.sacredsite.all %}
+                                                                <li class="nav-item p-0">
+                                                                    <a class="nav-link header-nav-linkk"
+                                                                        href="{% url 'journeyDetails' site.sacred_slug %}">
+                                                                        <div class="flex-space-between">
+                                                                            <div
+                                                                                class="d-flex align-items-center gap-2">
+                                                                                <img src="media/{{site.sacred_image}}"
+                                                                                    alt="" class="nav-img">
+                                                                                <div class="flex-column">
+                                                                                    <span
+                                                                                        class="dark-text-color">{{site.sacred_name}}</span>
+                                                                                    <small
+                                                                                        class="text-muted d-block">{{site.sacred_location}}</small>
+                                                                                </div>
+                                                                            </div>
+                                                                            <small
+                                                                                class="text-muted">{{site.sacred_days}}
+                                                                                days</small>
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </div>
+                                                        {% endif %}
+                                                    </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{% url 'blog' %}">Blog</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <div class="flex-space-between">
+                                                <a href="{% url 'about'  %}">About us</a><a data-bs-toggle="collapse"
+                                                    href="#multiCollapseExample5" role="button" aria-expanded="false"
+                                                    aria-controls="multiCollapseExample1" class="btn btn-link"><i
+                                                        class="fa-solid fa-chevron-down"></i></a>
+                                            </div>
+                                            <div class="collapse multi-collapse" id="multiCollapseExample5">
+                                                <div class="dropdown">
+                                                    <div class="d-flex flex-column gap-1">
+                                                        <div class="option p-3 header-nav-link">
+                                                            <a href="{% url 'ourmission' %}">
+                                                                Our Mission
+                                                            </a>
+                                                        </div>
+                                                        <div class="option p-3 header-nav-link">
+                                                            <a href="{% url 'whytravel' %}">
+                                                                Why choose us?
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item"><a href="{% url 'contact' %}">Contact</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="website-notice-banner" id="noticeBanner">
+        <span>You're on <strong>Website 2</strong>. Love this? Visit our main site: </span>
+        <a href="https://www.asiabuddhisttours.com/" class="notice-link" target="_blank" rel="noopener noreferrer"> Asia
+            Buddhist & Trek </a>
+        <button class="close-btn" id="closeBanner">×</button>
+    </div>
