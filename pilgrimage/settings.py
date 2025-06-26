@@ -28,10 +28,31 @@ SECRET_KEY = os.environ.get('SECRET_KEY')  # Set in environment
 DEBUG = False
 ALLOWED_HOSTS = [
     'testing-pilgrimage.vercel.app',
-    'www.testing-pilgrimage.vercel.app',
     '.vercel.app',
     '.now.sh'
 ]
+import os
+
+SECRET_KEY = os.environ['SECRET_KEY']  # Note: Using [] instead of get() to fail fast if missing
+DEBUG = False
+
+ALLOWED_HOSTS = [
+    'testing-pilgrimage.vercel.app',
+    '.vercel.app',
+    '.now.sh'
+]
+
+# Security Headers
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://*testing-pilgrimage.vercel.app',
+    'https://*.vercel.app'
+]
+
 # ALLOWED_HOSTS = []
 
 # Application definition
