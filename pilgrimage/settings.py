@@ -156,7 +156,11 @@ from pathlib import Path
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Remove duplicate declaration
+
+# Development static files (only for local dev, can be empty in production)
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] if DEBUG else []
+
+# Whitenoise configuration for Vercel
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type

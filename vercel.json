@@ -2,19 +2,12 @@
   "version": 2,
   "builds": [
     {
-      "src": "pilgrimage/wsgi.py",
+      "src": "yourproject/wsgi.py",
       "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "15mb",
-        "runtime": "python3.9",
-        "wsgi": {
-          "app": "pilgrimage.wsgi:application",
-          "loader": "python"
-        }
-      }
+      "config": { "maxLambdaSize": "15mb" }
     },
     {
-      "src": "staticfiles/**",
+      "src": "staticfiles/",
       "use": "@vercel/static"
     }
   ],
@@ -24,12 +17,8 @@
       "dest": "/static/$1"
     },
     {
-      "src": "/media/(.*)",
-      "dest": "/media/$1"
-    },
-    {
-      "src": "/.*",
-      "dest": "pilgrimage/wsgi.py"
+      "src": "/(.*)",
+      "dest": "yourproject/wsgi.py"
     }
   ]
 }
