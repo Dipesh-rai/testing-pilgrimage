@@ -1,0 +1,140 @@
+{% load static %}
+<!-- Subscription Section -->
+<section class="subscription py-5 mt-5">
+    <div class="container">
+        <div class="heading-items text-center text-white">Begin Your Spiritual Journey</div>
+        <div class="text-center">
+            Subscribe to receive mindful travel inspiration, meditation guidance, and exclusive
+            offers on our Buddhist tours and retreats.
+        </div>
+
+        <div id="subscription-message" class="text-center mt-3" style="min-height: 24px;"></div>
+
+        <form id="subscription-form" method="POST" class="mt-4">
+            {% csrf_token %}
+            <div class="d-flex flex-wrap w-100 justify-content-center gap-3">    
+                <input type="email" name="email" id="email-input" class="form-control" 
+                       placeholder="Enter Your email" required style="max-width: 300px;">
+                <button type="submit" class="btn-2">Subscribe</button>
+            </div>
+        </form>
+
+        <div class="text-center small py-2">
+            By subscribing, you agree to receive our newsletter
+        </div>
+        <div class="text-center small">
+            and accept our Privacy Policy.
+        </div>
+    </div>
+</section>
+
+<div class="d-flex align-items-center w-100">
+    <div class="blue-color flag"></div>
+    <div class="white-color flag"></div>
+    <div class="red-color flag"></div>
+    <div class="green-color flag"></div>
+    <div class="yellow-color flag"></div>
+</div>
+
+
+
+<!-- footer -->
+<footer class="w-100">
+    <div class="container">
+        <div class="footer-content">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                   {% for n in logo %}
+                    <h1 class="header"><a href="/">{{ n.logo_name }}</a></h1>
+                    {% endfor %}
+                    {% for n in footer %}
+                    <div class="content-footer mt-3">
+                        {{n.description | safe}}
+                    </div>
+                    {% endfor %}
+
+                    <div class="d-flex gap-3 align-items-center mt-3">
+                        <a href="https://www.facebook.com/AsiaBuddhistTours" target="_blank"><i class="media-items fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/nirvana__journey/" target="_blank"><i class="media-items fa-brands fa-instagram"></i></a>
+                        {% for n in contactpage %}
+                        <a href="https://wa.me/{{ n.whatsapp_number }}" target="_blank"><i class="media-items fa-brands fa-whatsapp"></i></a>
+                        {% endfor %}
+                        <a href=""><i class="media-items fa-brands fa-tiktok"></i></a>
+                        <a href="https://www.youtube.com/channel/UCIkdaWLZl-fTsmS8EVSVjZg" target="_blank"><i class="media-items fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 ">
+                    <div class="link-heading">
+                        Quick Links
+                    </div>
+                    <ul class="mt-2">
+                        <li><a href="{% url 'homepage' %}">Home</a></li>
+                        <li><a href="{% url 'categorypages' %}">Sacred Sites</a></li>
+                        <li><a href="{% url 'blog' %}">Blog</a></li>
+                        <li><a href="{% url 'about'  %}">About Us</a></li>
+                        <li><a href="{% url 'ourmission' %}">Our Mission</a></li>
+                        <li><a href="{% url 'whytravel' %}"> Why choose us?</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <div class="link-heading">
+                       Sacred Sites
+                    </div>
+                    <ul class="mt-2">
+                        {% for n in categories %}
+                        <li><a href="{% url 'sacredsite' %}?category={{n.sacred_slug}}">{{n.category_name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% for n in contactpage %}
+                <div class="col-lg-4">
+                    <div class="link-heading">
+                        Contact Us
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="d-flex gap-2">
+
+                                <i class="fa-solid fa-location-dot"></i>{{n.location_street}}, {{n.location_city}}, {{n.country}}
+                            </div>
+                        </li>
+                        <li>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <i class="fa-solid fa-phone"></i> <a href="tel:{{n.telephone_number_first}}">{{n.telphone_number_1}},</a>
+                                </i> <a href="tel:{{n.telephone_number_second}}">{{n.telephone_number_2}}</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <i class="fa-regular fa-envelope"></i> <a href="mailto:{{n.email}}" class="underline-items">{{n.email}},</a>
+                                <a href="mailto:{{n.email_2}}" class="underline-items">{{n.email_2}}</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+        <div class="fotter-bottom mt-2 p-0">
+            <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-between gap-3">
+                <div>© 2025 Buddhist Tours. All rights reserved.</div>
+                <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-between gap-3">
+                    <a href="">Privacy Policy</a>
+                    <a href="">Terms of Condition</a>
+                    <a href="">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="{% static 'js/main.js' %}"></script>
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/carousel.js' %}"></script>
+</body>
+
+</html>

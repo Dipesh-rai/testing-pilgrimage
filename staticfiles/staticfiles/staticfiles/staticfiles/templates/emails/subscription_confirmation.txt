@@ -1,0 +1,8 @@
+Welcome to Our Newsletter!
+
+Hi there,
+
+Thank you for subscribing to our newsletter with {{ email }}.
+You'll receive our latest updates and offers.
+
+If you didn't request this, please ignore this email.

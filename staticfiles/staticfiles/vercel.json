@@ -7,10 +7,13 @@
       "config": {
         "maxLambdaSize": "15mb",
         "runtime": "python3.9",
-        "wsgi": {
-          "app": "pilgrimage.wsgi:application",
-          "loader": "python"
-        }
+        "includeFiles": [
+          "requirements.txt",
+          "pilgrimage/**",
+          "staticfiles/**",
+          "media/**",
+          "templates/**"
+        ]
       }
     },
     {
@@ -21,14 +24,20 @@
   "routes": [
     {
       "src": "/static/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
       "dest": "/static/$1"
     },
     {
       "src": "/media/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=86400"
+      },
       "dest": "/media/$1"
     },
     {
-      "src": "/.*",
+      "src": "/(.*)",
       "dest": "pilgrimage/wsgi.py"
     }
   ]

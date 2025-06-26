@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<main>
+
+    <!-- banner -->
+    {% for b in blogpage %}
+    <section class="banner-next">
+        <img src="/media/{{b.banner_image}}" loading="lazy" alt="">
+        <div class="banner-content-next">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="heading-items">{{b.main_heading}}</div>
+                        <div class="dark-light">{{b.short_description | safe}}</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+    <section class="sacred mt-5">
+        <div class="container">
+            <div class="row gy-3">
+                <div class="col-lg-9">
+                    <div class="row">
+                    {% for b in blogpage %}
+                    <div class="content-top">
+                        <h2 class="heading-second">{{b.second_heading}}</h2>
+                        <div class="mt-1 text-editor">{{b.description | safe}}</div>
+                    </div>
+                    {% endfor %}
+                    </div>
+                    <div class="sacred-sites">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap py-3">
+                            <div class="heading-items">Blogs</div>
+                        </div>
+                        <div class="row p-0 gy-4">
+                            {% for n in blog %}
+                            <div class="col-lg-6">
+                                <article class="card half-card-banner shadow-sm">
+                                    <div class="img-part shadow-sm">
+                                        <a href="/blog/{{n.blog_slug}}"> <img src="/media/{{n.blog_img}}" loading="lazy" alt="{{n.img_src}}"> </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="normal-heading">{{n.blog_title}}</div>
+                                        </div>
+
+
+                                        <div class="content flex-all-center line-clamp">
+                                            <div class="line-clamp-content">{{ n.blog_description | safe }}</div>
+                                        </div>
+                                        <div class="c-footer w-100">
+                                            <div class="flex-center-between">
+                                                <span class="deam-thin">{{n.created_at|date:"Y-m-d"}}</span>
+                                                <a href="/blog/{{n.blog_slug}}" class="link-tag text-primary">Read More</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </article>
+                            </div>
+                            {% empty %}
+                            NO data Found
+                            {% endfor %}
+                            
+                        </div>
+
+                        <nav aria-label="Page navigation example border ">
+                            <ul class="pagination justify-content-center my-4">
+                                {% if blog.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ blog.previous.previous_page_number }}{% if current_Blog %}&blog={{ current_blog }}{% endif %}">Previous</a>
+                                </li>
+                                {% endif %}
+                                {% for num in blog.paginator.page_range %}
+                                <li class="page-item {% if num == blog.number %}active{% endif %}"><a class="page-link" href="?page={{ num }}{% if currnet_category %}&category={{ current_category }}{% endif %}">{{ num }}</a></li>
+                                {% endfor %}
+                               {% if blog.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ blog.next_page_number }}{% if blog %}&blog={{ blog }}{% endif %}">Next</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="height-100">
+                        <div class="sticky">
+                            <div class="d-flex flex-column gap-3">
+
+                                <div class=" background-g shadow-main  border-radius-5 p-0">
+                                    <div class="secondary-type-heading background-nav p-3">Buddist Practices</div>
+                                    <ul class="side-nav p-0 ul-relative ">
+                                        {% for n in categories %}
+                                        <li><a href="{% url 'sacredsite' %}?category={{n.sacred_slug}}"> <span
+                                                    class="ul-absolute"><i
+                                                        class="fa-solid fa-hands-praying"></i></span>{{n.category_name}}
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+
+                               <div class=" background-g shadow-main border-radius-5 p-0">
+                                    <div class="secondary-type-heading background-nav p-3">Start Your Journey with Us
+                                        Today</div>
+                                    <ul class="side-nav p-0 ul-relative ">
+                                        <li><a href="{% url 'contact' %}" target="_blank"><span class="ul-absolute"><i
+                                                        class="fa-solid fa-address-book"></i></span>Contact us</a></li>
+                                        <li><a href="https://wa.me/{{ n.whatsapp_number }}" target="_blank"><span
+                                                    class="ul-absolute"><i class="fa-brands fa-whatsapp"></i></span>
+                                                Contact us in
+                                                Whats
+                                                App</a></li>
+                                        {% for n in contactpage %}
+                                        <li><a href="mailto:{{n.email}}" s target="_blank"><span class="ul-absolute"><i class="fa-solid fa-envelope"></i></span>
+                                                {{n.email}} </a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+
+                                <!-- follow -->
+                                <div class="shadow-main border-radius-5">
+                                    <div class="secondary-type-heading background-nav p-3">Follow us on</div>
+                                    <div class="d-flex gap-3 align-items-center background-g p-4">
+                                        <a href=""><i class="media-items fa-brands fa-facebook-f"></i></a>
+                                        <a href=""><i class="media-items fa-brands fa-instagram"></i></a>
+                                        <a href=""><i class="media-items fa-brands fa-whatsapp"></i></a>
+                                        <a href=""><i class="media-items fa-brands fa-youtube"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,388 @@
+.banner {
+    width: 100%;
+    height: 90vh;
+    padding: 0;
+
+    img {
+        position: relative;
+        filter: brightness(90%);
+        width: 100%;
+    }
+
+
+    .banner-items {
+        position: absolute;
+        top: 60%;
+        transform: translateY(-50%);
+        max-width: 550px;
+
+        .banner-heading {
+            font-family: var(--secondary-font);
+            font-size: 50px;
+            font-weight: 600;
+
+        }
+    }
+
+    .left {
+        padding: 4px 8px;
+        background-color: #494E3C;
+        border-radius: 50%;
+    }
+
+    .small-header {
+        font-size: var(--font-sm);
+    }
+
+    .small-group {
+        color: white;
+        font-size: var(--font-sm)
+    }
+
+
+}
+
+.choose {
+    .experience {
+        padding: 10px;
+        background-color: #FAFAED;
+        height: 250px;
+        border-radius: 10px;
+        transition: 0.2s;
+
+        .icon {
+            background-color: var(--icon-color);
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            margin-inline: auto;
+
+            i {
+                color: var(--primary-color);
+            }
+        }
+
+        .heading-c {
+            font-size: var(--font-xl);
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+    }
+
+
+}
+    .commitment {
+        background-color: var(--background-color) !important;
+        padding: 0;
+        font-size: var(--font-md);
+
+        .commit {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+
+        }
+
+        .commit-heading {
+            font-size: var(--font-xxl);
+            font-weight: 600;
+            font-family: var(--heading-color);
+        }
+
+
+    }
+// sacred
+.sacred {
+    .p {
+        display: block;
+        margin-inline: auto;
+    }
+
+    .sacred-site {
+        color: white;
+
+        .sacred-img {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+
+            img {
+                filter: brightness(70%);
+                transition: 0.5s;
+                width: 100%;
+            }
+
+            .sacred-content {
+                position: absolute;
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+
+                .sacred-content-header {
+                    font-size: var(--font-xxl);
+                    font-weight: 700;
+                }
+
+                .sacred-content-body {
+                    font-weight: 400;
+                }
+
+            }
+
+            a {
+                display: block;
+                width: fit-content;
+                color: var(--primary-color) !important;
+
+                i {
+                    font-size: var(--font-sm);
+                }
+
+                &:hover {
+                    text-decoration: underline !important;
+
+                    i {
+                        text-decoration: underline !important;
+                    }
+                }
+            }
+
+            &:hover {
+                transform: translateY(-10px);
+                transition: 0.5s;
+
+                img {
+                    transform: scale(1.2);
+                }
+
+            }
+        }
+
+    }
+}
+
+
+// discover
+.discover {
+    background-color: var(--background-color);
+    padding: 60px 0;
+
+    .heading-title {
+        padding: 10px 0;
+        font-family: var(--secondary-font);
+        font-size: var(--font-xxl);
+        font-weight: 600;
+    }
+
+    .row {
+        background-color: white;
+        border-radius: 20px;
+        overflow: hidden;
+        ;
+        margin-inline: 0 !important;
+
+        .col-lg-9 {
+            img {
+                height: 450px;
+            }
+        }
+    }
+
+
+
+    .col-lg-3 {
+        padding: 20px;
+    }
+
+    .menu-destination {
+        .destination-sidenav {
+            padding: 10px;
+            border: none;
+            width: 100%;
+            @include flex-items-center;
+            gap: 10px;
+            border-radius: 20px;
+
+            &:hover {
+                background-color: var(--nav-color);
+            }
+
+            &.active {
+                background-color: var(--nav-color);
+            }
+
+            .destination-name {
+                text-align: start;
+                font-family: var(--secondary-font);
+                font-weight: 600;
+
+            }
+
+            .destination-title {
+                text-align: start;
+                font-size: var(--font-md);
+            }
+        }
+    }
+
+}
+
+
+.spritual {
+
+    .spritual-items {
+        .nav {
+            @include flex-center;
+
+            button {
+                padding: 7px 20px;
+                border: none;
+                background-color: var(--nav-color);
+                border-radius: 20px;
+                transition: 0.5s;
+
+                &.active {
+                    background-color: var(--primary-color);
+                    color: white;
+                }
+            }
+        }
+
+        // all tour
+        .tours {
+            .card {
+                border: none;
+                transition: 0.2s;
+
+                .img-part {
+                    height: 200px;
+                    overflow: hidden;
+                    position: relative;
+
+
+                    .btn-1 {
+                        position: absolute;
+                        top: 10px;
+                        right: 10px;
+                        border-radius: 20px;
+                    }
+
+                    img {
+                        transition: 0.2s;
+                    }
+                }
+
+                i {
+                    font-size: var(--font-sm);
+                }
+
+                .rating {
+                    i {
+                        color: var(--primary-color) !important;
+                    }
+                }
+
+                .content {
+                    font-size: var(--font-md);
+                }
+
+                .practices {
+                    padding: 7px 10px;
+                    background-color: var(--nav-color);
+                    font-size: var(--font-sm);
+                    border-radius: 15px;
+                }
+
+                .price {
+                    font-weight: 500;
+                    color: var(--heading-color);
+                }
+
+                &:hover {
+                    box-shadow: var(--shadow-lg) !important;
+                    transform: translateY(-10px);
+
+                    img {
+                        overflow: hidden;
+                        transform: scale(1.2);
+                    }
+                }
+            }
+
+
+        }
+    }
+}
+
+.testimonial {
+    background-color: var(--background-color);
+    padding: 60px 0;
+
+    .testimonial-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: var(--shadow-main);
+
+        img {
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+        }
+
+        .rating {
+            color: var(--primary-color);
+            font-size: var(--font-md);
+        }
+    }
+}
+
+.practice {
+    img {
+        border-radius: 15px;
+    }
+
+    .practice-row {
+        height: 110px;
+    }
+
+    .card {
+        background-color: var(--icon-color);
+        border: none;
+
+        i {
+            color: var(--primary-color);
+        }
+    }
+}
+
+.subscription {
+    background-color: var(--brown-color);
+    color: rgba(255, 255, 255, 0.7) !important;
+
+    input {
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        width: 250px;
+
+        &:focus-visible {
+            outline: none;
+
+        }
+
+    }
+
+    .btn-2 {
+
+        border-radius: 10px !important;
+    }
+
+    .small {
+        font-size: var(--font-md);
+    }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inquiry Confirmation</title>
+    <style>
+        body{
+            color:black;
+            letter-spacing: 0.5px;
+            line-height: 25px;
+        }
+        .color{
+            color:green;
+            font-size:20px;
+        }
+        
+    
+    p {
+        margin-bottom: 5px !important;
+    }
+
+    li {
+        margin-bottom: 10px !important;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin-bottom: 10px !important;
+        color: var(--heading-color);
+    }
+
+    </style>
+</head>
+<body>
+    <h2>Thank you for your Inquiry, <b>{{ booking.full_name }}!</b></h2>
+    
+    <h3>Tour Details:</h3>
+    <p><strong>Package:</strong> {{ package.sacred_name }}</p>
+    <p><strong>Location:</strong> {{ package.sacred_location }}</p>
+    <p><strong>Duration:</strong> {{ package.sacred_days }}</p>
+    <p><strong>Booking Date:</strong> {{ booking.booking_date }}</p>
+    <p><strong>Participants:</strong> {{ booking.participants }}</p>
+    
+    {% if booking.special_requests %}
+    <p><strong>Special Requests:</strong> {{ booking.special_requests }}</p>
+    {% endif %}
+
+    {{ package.overview|safe }}
+    
+    
+ 
+
+    <h2>Itinerary Overview:</h2>
+    {% for item in itineraries %}
+    <p><strong>Day {{ forloop.counter }}:</strong> {{ item.day_title }}</p>
+    {{ item.description|safe }}
+    {% endfor %}
+    
+    <p class="color">We'll contact you shortly to confirm your details.</p>
+</body>
+</html>
