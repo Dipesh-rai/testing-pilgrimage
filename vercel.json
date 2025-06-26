@@ -7,7 +7,13 @@
       "config": {
         "maxLambdaSize": "15mb",
         "runtime": "python3.9",
-        "includeFiles": ["requirements.txt", "pilgrimage/**", "staticfiles/**"]
+        "includeFiles": [
+          "requirements.txt",
+          "pilgrimage/**",
+          "staticfiles/**",
+          "media/**",
+          "templates/**"
+        ]
       }
     },
     {
@@ -29,10 +35,6 @@
         "Cache-Control": "public, max-age=86400"
       },
       "dest": "/media/$1"
-    },
-    {
-      "src": "/admin/(.*)",
-      "dest": "pilgrimage/wsgi.py"
     },
     {
       "src": "/(.*)",
