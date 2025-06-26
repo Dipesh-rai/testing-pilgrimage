@@ -2,23 +2,29 @@
   "version": 2,
   "builds": [
     {
-      "src": "yourproject/wsgi.py",
+      "src": "pilgrimage/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb" }
+      "config": {
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.9"
+      }
     },
     {
-      "src": "staticfiles/",
+      "src": "staticfiles/**",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/static/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
       "dest": "/static/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "yourproject/wsgi.py"
+      "dest": "pilgrimage/wsgi.py"
     }
   ]
 }
