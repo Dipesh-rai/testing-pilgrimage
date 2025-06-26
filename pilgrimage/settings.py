@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-8!%sqzg6xspytqm8n=jx!8i26mis=0o1e9dk44n0ob4d3avx_a
 SECRET_KEY = os.environ.get('SECRET_KEY')  # Set in environment
 DEBUG = False
 ALLOWED_HOSTS = [
-    'pilgrimage.vercel.app',
+    'testing-pilgrimage.vercel.app',
     '.vercel.app',
     '.now.sh'
 ]
